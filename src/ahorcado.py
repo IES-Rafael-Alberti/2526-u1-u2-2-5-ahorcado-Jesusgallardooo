@@ -65,7 +65,7 @@ def solicitar_letra(letras_usadas:list)-> str:
     return letra
 
 
-def mostrar_estado(palabra_oculta, intentos, letras_usadas):
+def mostrar_estado(palabra_oculta:str, intentos:int, letras_usadas:list):
     """
     Muestra el estado actual del juego
     
@@ -76,12 +76,19 @@ def mostrar_estado(palabra_oculta, intentos, letras_usadas):
     """
     # TODO: Implementar la función
     # - Imprimir intentos restantes
+    print(f"Intentos restantes --> {intentos}")
     # - Imprimir la palabra con espacios entre caracteres
+    print(" ".join(palabra_oculta))
+
     # - Imprimir las letras usadas
-    pass
+    if letras_usadas:
+        print("Letras usadas -->", " ".join(letras_usadas))
+    else:
+        print("Aún no has usado ninguna letra.")
 
 
-def actualizar_palabra_oculta(palabra, palabra_oculta, letra):
+
+def actualizar_palabra_oculta(palabra:str, palabra_oculta:str, letra:str)-> str:
     """
     Actualiza la palabra oculta revelando las apariciones de la letra
     
@@ -94,11 +101,19 @@ def actualizar_palabra_oculta(palabra, palabra_oculta, letra):
         str: La palabra oculta actualizada
     """
     # TODO: Implementar la función
+
+    palabra_oculta =  list(palabra_oculta)
+
     # - Recorrer la palabra original con un bucle for
     # - Usar enumerate() para obtener índice y carácter
-    # - Si el carácter coincide con la letra, reemplazar en palabra_oculta
+    for i, caracter in enumerate(palabra):
+        if caracter == letra:
+            # - Si el carácter coincide con la letra, reemplazar en palabra_oculta
+            palabra_oculta[i] = letra
+
     # - Puedes convertir palabra_oculta a lista, modificar y volver a string
-    pass
+    return "".join(palabra_oculta)
+
 
 
 def jugar():
@@ -111,17 +126,20 @@ def jugar():
     INTENTOS_MAXIMOS = 5
     
     # TODO: Solicitar la palabra al jugador 1
-    # palabra = solicitar_palabra()
+    palabra = solicitar_palabra()
     
     # TODO: Limpiar la pantalla para que el jugador 2 no vea la palabra
-    # limpiar_pantalla()
+    limpiar_pantalla()
     
     # TODO: Inicializar variables del juego
     # - palabra_oculta: string con guiones bajos (ej: "_ _ _ _ _")
+    palabra_oculta = len(palabra) * "_"
     # - intentos: número de intentos restantes
+    intentos = INTENTOS_MAXIMOS
     # - letras_usadas: lista vacía
+    letras_usadas = []
     # - juego_terminado: False
-    
+    #     
     print("Jugador 2: ¡Adivina la palabra!\n")
     
     # TODO: Bucle principal del juego
