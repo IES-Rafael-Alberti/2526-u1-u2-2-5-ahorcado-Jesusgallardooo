@@ -21,7 +21,7 @@ def limpiar_pantalla():
     print("\n" * 50)
 
 
-def solicitar_palabra():
+def solicitar_palabra()-> str:
     """
     Solicita una palabra al jugador 1
     La palabra debe tener mínimo 5 caracteres y solo contener letras
@@ -29,15 +29,17 @@ def solicitar_palabra():
     Returns:
         str: La palabra a adivinar en mayúsculas
     """
-    # TODO: Implementar la función
-    # - Usar un bucle while para repetir hasta que la palabra sea válida
-    # - Verificar que tenga al menos 5 caracteres (len())
-    # - Verificar que solo contenga letras (isalpha())
-    # - Convertir a mayúsculas (upper())
-    pass
+
+    palabra = input("Introduzca la palabra que tiene en mente --> ").upper()
+
+    while (not palabra.isalpha()) or (len(palabra) < 5) :
+        print("valor introducido incorrecto, tiene que tener +5 caracteres y solo puede contener letras.")
+        palabra = input("Introduzca la palabra que tiene en mente --> ").upper()
+        
+    return palabra
 
 
-def solicitar_letra(letras_usadas):
+def solicitar_letra(letras_usadas:list)-> str:
     """
     Solicita una letra al jugador 2
     La letra debe ser válida (solo una letra) y no estar ya usada
@@ -48,13 +50,19 @@ def solicitar_letra(letras_usadas):
     Returns:
         str: La letra introducida en mayúsculas
     """
-    # TODO: Implementar la función
-    # - Usar un bucle while para repetir hasta que la letra sea válida
-    # - Verificar que sea solo un carácter (len() == 1)
-    # - Verificar que sea una letra (isalpha())
-    # - Verificar que no esté en letras_usadas (operador 'in')
-    # - Convertir a mayúsculas (upper())
-    pass
+
+    letra = input("Introduzca la letra que tiene en mente --> ").upper()
+
+    while (len(letra) != 1) or (not letra.isalpha()) or (letra in letras_usadas):
+
+        if letra in letras_usadas:
+            print("letra ya registrada, prueba otra vez.")
+        else:
+            print("valor introducido inválido, solo puede introducir letras individualmente, prueba otra vez.")
+        
+        letra = input("Introduzca la letra que tiene en mente --> ").upper()
+
+    return letra
 
 
 def mostrar_estado(palabra_oculta, intentos, letras_usadas):
