@@ -27,3 +27,17 @@ Para solucionar dicho error, una vez localizado, fui al código del archivo `aho
 ![](./assets/error_solucionado.png)
 
 De esta manera, mi programa del juego ahorcado funciona correctamente.
+
+# Documentación del proyecto:
+
+La documentación de este proyecto ya está desarrollada correctamente, pero aún así, vamos a realizar algún cambio en algunas de las funciones para utilizar distintos tipos de documentación.
+
+Las funciones que vamos a documentar de distintas maneras son: `solicitar_letra()`, `actualizar_palabra_oculta()` y `mostrar_estado()`.
+
+### Enlaces al código con la nueva documentación:
+
+- función `solicitar_letra()` con [estilo NumPy](https://goo.su/ax1M3).
+
+- función `actualizar_palabra_oculta()` con [documentación con comentarios](https://goo.su/ISBdD2h).
+
+- función `mostrar_estado()` con [estilo reStructuredText](https://goo.su/IsXA2)
