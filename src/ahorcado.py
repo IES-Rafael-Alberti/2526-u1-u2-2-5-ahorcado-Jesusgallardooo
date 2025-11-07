@@ -12,6 +12,13 @@ Autor: Jesús Gallardo Domínguez
 Fecha: 6/11/2025
 """
 
+EQUIVALENCIAS_TILDES = { # 10 elementos para que sea bidireccional. 
+    "Á": "A", "A": "Á",
+    "É": "E", "E": "É",
+    "Í": "I", "I": "Í",
+    "Ó": "O", "O": "Ó",
+    "Ú": "U", "U": "Ú"
+} 
 
 def limpiar_pantalla():
     """
@@ -103,8 +110,8 @@ def actualizar_palabra_oculta(palabra:str, palabra_oculta:str, letra:str)-> str:
     palabra_oculta =  list(palabra_oculta)
 
     for i, caracter in enumerate(palabra):
-        if caracter == letra:
-            palabra_oculta[i] = letra
+        if caracter == letra or EQUIVALENCIAS_TILDES.get(caracter) == letra:
+            palabra_oculta[i] = caracter
 
     return "".join(palabra_oculta)
 
@@ -136,7 +143,7 @@ def jugar():
 
         letras_usadas.append(letra)
 
-        if letra in palabra:
+        if letra in palabra or EQUIVALENCIAS_TILDES.get(letra, "") in palabra:
             palabra_oculta = actualizar_palabra_oculta(palabra, palabra_oculta, letra)
             print(" <<< ACIERTO >>> \n")
 
@@ -144,7 +151,7 @@ def jugar():
                 juego_terminado = True 
                 print(" <<< ¡¡¡ HAS GANADO !!! >>> \n")
 
-        if letra not in palabra:  
+        if letra not in palabra and EQUIVALENCIAS_TILDES.get(letra, "") not in palabra:  
             intentos -= 1      
             print("<<< FALLO... >>> \n")
     
