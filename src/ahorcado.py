@@ -48,14 +48,18 @@ def solicitar_palabra()-> str:
 
 def solicitar_letra(letras_usadas:list)-> str:
     """
-    Solicita una letra al jugador 2
-    La letra debe ser válida (solo una letra) y no estar ya usada
-    
-    Args:
-        letras_usadas (list): Lista de letras ya introducidas
-        
-    Returns:
-        str: La letra introducida en mayúsculas
+    Solicita una letra al jugador 2.
+    La letra debe ser válida (solo una letra) y no estar ya usada.
+
+    Parameters
+    ----------
+    letras_usadas : list
+        Lista de letras ya introducidas.
+
+    Returns
+    -------
+    str
+        La letra introducida en mayúsculas.
     """
 
     letra = input("Introduzca la letra que tiene en mente --> ").upper()
@@ -76,12 +80,14 @@ def solicitar_letra(letras_usadas:list)-> str:
 
 def mostrar_estado(palabra_oculta:str, intentos:int, letras_usadas:list):
     """
-    Muestra el estado actual del juego
-    
-    Args:
-        palabra_oculta (str): La palabra con _ y letras adivinadas
-        intentos (int): Número de intentos restantes
-        letras_usadas (list): Lista de letras ya usadas
+    Muestra el estado actual del juego.
+
+    :param palabra_oculta: La palabra con guiones bajos y letras adivinadas.
+    :type palabra_oculta: str
+    :param intentos: Número de intentos restantes.
+    :type intentos: int
+    :param letras_usadas: Lista de letras ya usadas.
+    :type letras_usadas: list
     """
     
     print(f"Intentos restantes --> {intentos}\n")
@@ -95,17 +101,15 @@ def mostrar_estado(palabra_oculta:str, intentos:int, letras_usadas:list):
 
 
 def actualizar_palabra_oculta(palabra:str, palabra_oculta:str, letra:str)-> str:
-    """
-    Actualiza la palabra oculta revelando las apariciones de la letra
-    
-    Args:
-        palabra (str): La palabra completa a adivinar
-        palabra_oculta (str): La palabra actual con _ y letras adivinadas
-        letra (str): La letra que se ha adivinado
-        
-    Returns:
-        str: La palabra oculta actualizada
-    """
+    # Actualiza la palabra oculta revelando las apariciones de la letra.
+    #
+    # Parámetros:
+    #   palabra (str): La palabra completa a adivinar.
+    #   palabra_oculta (str): La palabra actual con guiones bajos y letras adivinadas.
+    #   letra (str): La letra que se ha adivinado.
+    #
+    # Devuelve:
+    #   str: La palabra oculta actualizada.
 
     palabra_oculta =  list(palabra_oculta)
 
